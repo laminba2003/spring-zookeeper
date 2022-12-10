@@ -1,5 +1,6 @@
 server:
   port: 9090
+
 spring:
   application:
     name: spring-zookeeper
@@ -16,10 +17,15 @@ spring:
     change-log: classpath:/db/changelog/changelog-master.xml
   cloud:
     zookeeper:
+      discovery:
+        instance-id: ${spring.application.name}:${random.value}
+        prefer-ip-address: true
       connect-string: localhost:2181
+
 info:
   application:
     name: Spring Zookeeper
+
 management:
   endpoints:
     web:

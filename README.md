@@ -44,6 +44,9 @@ spring:
     name: spring-zookeeper
   cloud:
     zookeeper:
+      discovery:
+        instance-id: ${spring.application.name}:${random.value}
+        prefer-ip-address: true
       connect-string: localhost:2181
 ```
 
