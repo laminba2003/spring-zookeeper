@@ -20,7 +20,7 @@ Spring Cloud Zookeeper provides Apache Zookeeper integrations for Spring Boot ap
 <dependencies>
     <dependency>
         <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+        <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
     </dependency>
 </dependencies>
 <dependencyManagement>
