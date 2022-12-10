@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="mamadou lamine ba" id="initial-data-countries">
+        <insert tableName="countries">
+            <column name="name" value="France"/>
+            <column name="capital" value="Paris"/>
+            <column name="population" value="12233344"/>
+        </insert>
+        <insert tableName="countries">
+            <column name="name" value="Spain"/>
+            <column name="capital" value="Madrid"/>
+            <column name="population" value="12233344"/>
+        </insert>
+        <insert tableName="countries">
+            <column name="name" value="Senegal"/>
+            <column name="capital" value="Dakar"/>
+            <column name="population" value="12233344"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="mamadou lamine ba" id="initial-data-persons">
+        <insert tableName="persons">
+            <column name="id" value="1"/>
+            <column name="first_name" value="Mamadou Lamine"/>
+            <column name="last_name" value="Ba"/>
+            <column name="country_name" value="France"/>
+        </insert>
+        <insert tableName="persons">
+            <column name="id" value="2"/>
+            <column name="first_name" value="John"/>
+            <column name="last_name" value="Doe"/>
+            <column name="country_name" value="Senegal"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

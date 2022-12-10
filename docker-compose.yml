@@ -1,0 +1,71 @@
+version: '3.7'
+
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: spring-training
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - 3307:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  zookeeper1:
+    image: docker.io/bitnami/zookeeper:3.8
+    ports:
+      - 2181:2181
+      - 8080:8080
+    volumes:
+      - zookeeper1_data:/bitnami
+    environment:
+      - ZOO_SERVER_ID=1
+      - ALLOW_ANONYMOUS_LOGIN=yes
+      - ZOO_SERVERS=zookeeper1:2888:3888,zookeeper2:2888:3888,zookeeper3:2888:3888
+    networks:
+      - zookeeper
+
+  zookeeper2:
+    image: docker.io/bitnami/zookeeper:3.8
+    ports:
+      - 2181
+    volumes:
+      - zookeeper2_data:/bitnami
+    environment:
+      - ZOO_SERVER_ID=2
+      - ALLOW_ANONYMOUS_LOGIN=yes
+      - ZOO_SERVERS=zookeeper1:2888:3888,zookeeper2:2888:3888,zookeeper3:2888:3888
+    networks:
+      - zookeeper
+
+  zookeeper3:
+    image: docker.io/bitnami/zookeeper:3.8
+    ports:
+      - 2181
+    volumes:
+      - zookeeper3_data:/bitnami
+    environment:
+      - ZOO_SERVER_ID=3
+      - ALLOW_ANONYMOUS_LOGIN=yes
+      - ZOO_SERVERS=zookeeper1:2888:3888,zookeeper2:2888:3888,zookeeper3:2888:3888
+    networks:
+      - zookeeper
+
+volumes:
+  mysql_data:
+    driver: local
+  zookeeper1_data:
+    driver: local
+  zookeeper2_data:
+    driver: local
+  zookeeper3_data:
+    driver: local
+
+networks:
+  zookeeper:
+    driver: bridge

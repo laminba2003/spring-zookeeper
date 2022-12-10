@@ -1,0 +1,30 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: spring-zookeeper
+  datasource:
+    url: "jdbc:mysql://localhost:3307/spring-training?allowPublicKeyRetrieval=true&autoReconnect=true&useSSL=false"
+    username: user
+    password: user
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    open-in-view: false
+    hibernate:
+      use-new-id-generator-mappings: false
+  liquibase:
+    change-log: classpath:/db/changelog/changelog-master.xml
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
+info:
+  application:
+    name: Spring Zookeeper
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  info:
+    env:
+      enabled: true
