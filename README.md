@@ -46,9 +46,29 @@ spring:
     zookeeper:
       discovery:
         instance-id: ${spring.application.name}:${random.value}
-        prefer-ip-address: true
       connect-string: localhost:2181
 ```
+
+## TLS and SSL
+
+You can register your service on Zookeeper to listen for requests on HTTPS by following the usual Spring server configuration. The following example shows how to do so:
+
+```yaml
+server:
+  ssl:
+    enabled: true
+    key-store: classpath:server.jks
+    key-store-password: changeit
+    key-store-type: JKS
+    key-alias: thinktech
+
+spring:
+  cloud:
+    zookeeper:
+      discovery:
+        instance-ssl-port: ${server.port}
+```
+
 
 ## Start the Zookeeper server
 
