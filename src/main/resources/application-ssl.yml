@@ -1,0 +1,13 @@
+server:
+  ssl:
+    enabled: true
+    key-store: classpath:server.jks
+    key-store-password: changeit
+    key-store-type: JKS
+    key-alias: thinktech
+
+spring:
+  cloud:
+    zookeeper:
+      discovery:
+        instance-ssl-port: ${server.port}
